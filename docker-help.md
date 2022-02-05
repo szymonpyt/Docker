@@ -35,7 +35,7 @@ $ docker container run -d -p 80:80 nginx
 ### Shorthand
 
 ```
-$ docker container run -d -p 80:80 nginx
+$ docker run -d -p 80:80 nginx
 ```
 
 ### Naming Containers
@@ -213,10 +213,6 @@ $ docker container run -it --name [NAME] nginx bash
 - i = interactive Keep STDIN open if not attached
 - t = tty - Open prompt
 
-**For Git Bash, use "winpty"**
-
-```
-$ winpty docker container run -it --name [NAME] nginx bash
 ```
 
 ### Run/Create Ubuntu container
@@ -320,13 +316,13 @@ Youll see that each image has a tag
 ### Retag existing image
 
 ```
-$ docker image tag nginx btraversy/nginx
+$ docker image tag nginx new-name:version
 ```
 
 ### Upload to dockerhub
 
 ```
-$ docker image push bradtraversy/nginx
+$ docker image push docker-hub-username/image-name:version
 ```
 
 ### If denied, do
@@ -338,7 +334,7 @@ $ docker login
 ### Add tag to new image
 
 ```
-$ docker image tag bradtraversy/nginx bradtraversy/nginx:testing
+$ docker image tag docker-hub-username/nginx docker-hub-username/nginx:testing
 ```
 
 ### DOCKERFILE PARTS
@@ -394,7 +390,7 @@ $ docker image tag nginx-website:latest btraversy/nginx-website:latest
 ```
 
 ```
-$ docker image push bradtraversy/nginx-website
+$ docker image push docker-hub-username/nginx-website
 ```
 
 # VOLUMES
@@ -513,7 +509,7 @@ $ touch test.txt
 # same as
 # docker run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-serve
 
-version: '2'
+version: '3'
 services:
   jekyll:
     image: bretfisher/jekyll-serve
