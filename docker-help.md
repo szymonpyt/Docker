@@ -386,7 +386,7 @@ $ docker container run -p 80:80 --rm nginx-website
 ### Tag and push to Dockerhub
 
 ```
-$ docker image tag nginx-website:latest btraversy/nginx-website:latest
+$ docker image tag nginx-website:latest docker-hub-username/nginx-website:latest
 ```
 
 ```
@@ -503,18 +503,15 @@ $ touch test.txt
 
 ### 2. docker-compose CLI - used for local dev/test automation with YAML files
 
-### Sample compose file (From Bret Fishers course)
-
 ```
-# same as
-# docker run -p 80:4000 -v $(pwd):/site bretfisher/jekyll-serve
+# docker run -p 80:4000 -v $(pwd):/var/www/html
 
 version: '3'
 services:
-  jekyll:
-    image: bretfisher/jekyll-serve
+  apache-server:
+    image: ubuntu/apache2
     volumes:
-      - .:/site
+      - .:/var/www/html
     ports:
       - '80:4000'
 ```
